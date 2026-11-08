@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Question</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Fondo moteado estilo ilustración retro -->
+  <canvas id="bg-dots" aria-hidden="true"></canvas>
+
+  <main class="desktop-area">
+    <!-- PANTALLA 1: Ventana Question ("Te gusto?") -->
+    <section id="question-window" class="retro-window question-dialog" aria-labelledby="dialog-title">
+      <header class="window-header">
+        <span id="dialog-title" class="window-title">Question</span>
+        <div class="window-controls">
+          <button type="button" class="win-ctrl close-ctrl" aria-label="Cerrar" tabindex="-1">✕</button>
+        </div>
+      </header>
+
+      <div class="window-body question-body">
+        <div class="question-content">
+          <div class="question-icon" aria-hidden="true">?</div>
+          <p class="question-text">Te gusto?</p>
+        </div>
+
+        <div class="dialog-actions" id="buttons-container">
+          <button type="button" id="btn-yes" class="retro-btn">Sí</button>
+          <button type="button" id="btn-no" class="retro-btn">No</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANTALLA 2: Ventana de Gráfica Matemática -->
+    <section id="math-window" class="retro-window math-dialog hidden" aria-labelledby="math-title">
+      <header class="window-header">
+        <span id="math-title" class="window-title">Functions.exe</span>
+        <div class="window-controls">
+          <span class="win-ctrl minimize-ctrl" aria-hidden="true">_</span>
+          <span class="win-ctrl maximize-ctrl" aria-hidden="true">□</span>
+          <span class="win-ctrl close-ctrl" aria-hidden="true">✕</span>
+        </div>
+      </header>
+
+      <div class="window-body math-body">
+        <!-- Barra superior con la ecuación matemática activa -->
+        <div class="formula-bar">
+          <span class="formula-badge" id="step-indicator">f(t)</span>
+          <div class="formula-expression" id="formula-text">Inicializando plano...</div>
+        </div>
+
+        <!-- Contenedor del plano cartesiano -->
+        <div class="canvas-wrapper">
+          <canvas id="math-canvas" width="540" height="540"></canvas>
+          
+          <!-- Superposición final con la frase cuando se dibuja el corazón en el fondo -->
+          <div id="final-overlay" class="final-overlay hidden">
+            <div class="final-phrase-card">
+              <p class="final-line-1">OYE MARINA,</p>
+              <p class="final-line-2">ME GUSTAS</p>
+              <p class="final-line-3">MUCHO</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progreso de letras acumuladas -->
+        <div class="phrase-progress" id="phrase-progress" aria-live="polite">
+          <div class="word-row" id="word-marina"></div>
+          <div class="word-row" id="word-megustas"></div>
+          <div class="word-row" id="word-mucho"></div>
+        </div>
+
+        <!-- Botón para repetir al terminar -->
+        <div class="replay-container hidden" id="replay-container">
+          <button type="button" id="btn-replay" class="retro-btn">Volver a ver ↻</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
